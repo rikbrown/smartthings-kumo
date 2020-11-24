@@ -8,7 +8,7 @@ export class KumoBridge {
         return rooms.map(roomName =>
             new Device(
                 roomName.replace(/\W/, '_'),
-                roomName + ' AC',
+                roomName + ' HVAC',
                 roomName
             )
         )   
@@ -19,9 +19,13 @@ export class KumoBridge {
         if (!room) return Promise.reject()
 
         const address = this.kumo.getAddress(room)
-        return this.kumo.getStatus(address).then((r: KumoStatusResponse) =>
-            r.r.indoorUnit.status
-        )
+        console.log(room, address)
+        
+        return this.kumo.getStatus(address).then((r: KumoStatusResponse) => {
+            const status = r.r.indoorUnit.status;
+            status.temperatureUnit = status.spCool < 35 ? TemperatureUnit.C : TemperatureUnit.F
+            return status
+        })
     }
 }
 
@@ -42,18 +46,29 @@ interface KumoStatusResponse {
 }
 
 interface DeviceStatus {
+    temperatureUnit: TemperatureUnit,
     roomTemp: number,
     mode: ThermostatMode,
     spCool: number,
     spHeat: number,
-    vaneDir: string,
-    fanSpeed: string,
+    vaneDir: string, // TODO: enum
+    fanSpeed: string, // TODO: enum
     filterDirty: boolean,
     standby: boolean
 }
 
-enum ThermostatMode {
-    HEAT,
-    COOL,
-    AUTO
+export enum ThermostatMode {
+    // TODO: add all
+    HEAT = 'heat',
+    COOL = 'cool',
+    AUTO_COOL = 'autoCool',
+    AUTO_HEAT = 'autoHeat',
+    VENT = 'vent',
+    DRY = 'dry',
+    OFF = 'off'
+}
+
+export enum TemperatureUnit {
+    C = 'C',
+    F = 'F'
 }
