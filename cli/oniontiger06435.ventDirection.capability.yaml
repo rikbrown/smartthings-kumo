@@ -1,0 +1,41 @@
+id: oniontiger06435.ventDirection
+version: 1
+status: proposed
+name: Vent Direction
+attributes:
+  ventDirection:
+    schema:
+      type: object
+      properties:
+        value:
+          type: string
+          enum: 
+            - auto
+            - swing
+            - horizontal
+            - midhorizontal
+            - midpoint
+            - midvertical
+            - vertical
+          default: auto
+      additionalProperties: false
+      required:
+        - value
+    setter: setVentDirection
+    enumCommands: []
+commands:
+  setVentDirection:
+    name: setVentDirection
+    arguments:
+      - name: value
+        optional: false
+        schema:
+          type: string
+          enum: 
+            - auto
+            - swing
+            - horizontal
+            - midhorizontal
+            - midpoint
+            - midvertical
+            - vertical

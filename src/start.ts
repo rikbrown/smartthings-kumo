@@ -1,4 +1,6 @@
-import KumoServer from './KumoServer';
+require('dotenv').config()
 
-const exampleServer = new KumoServer();
-exampleServer.start(3000);
+import SmartThingsKumoServer from './SmartThingsKumoServer';
+
+const server = new SmartThingsKumoServer();
+server.start(3000);

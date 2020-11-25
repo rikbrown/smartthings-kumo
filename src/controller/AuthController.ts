@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { Controller, Middleware, Get, Put, Post, Delete } from '@overnightjs/core';
+import {Logger} from "@overnightjs/logger";
 
 @Controller('auth')
 export class AuthController {
 
     @Get("challenge")
     private getCode(req: Request, res: Response) {
-        console.log('/auth/challenge');
+        Logger.Imp('/auth/challenge');
 
         console.log(req.query);
 
@@ -24,7 +25,8 @@ export class AuthController {
 
     @Post("token")
     private exchangeToken(req: Request, res: Response) {
-        console.log('/auth/token');
+        Logger.Imp('/auth/token');
+
         res
             .status(200)
             .send({

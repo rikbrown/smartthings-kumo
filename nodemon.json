@@ -2,6 +2,9 @@
     "watch": ["src"],
     "ext": "ts",
     "ignore": ["src/public"],
-    "exec": "NODE_ENV=development ts-node src/start.ts"
+    "exec": "NODE_ENV=development node  --trace-warnings -r ts-node/register src/start.ts",
+    "env": {
+
+    }
   }
   

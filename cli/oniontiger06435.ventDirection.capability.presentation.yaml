@@ -1,0 +1,49 @@
+id: oniontiger06435.ventDirection
+version: 1
+dashboard:
+  states:
+  - label: "{{ventDirection.value}}"
+  actions: []
+  basicPlus: []
+detailView:
+- label: Vent Direction
+  displayType: list
+  list:
+    command: 
+      name: setVentDirection
+      alternatives:
+      - key: auto
+        value: Auto
+      - key: swing
+        value: Swing
+      - key: horizontal
+        value: Ceiling
+      - key: midhorizontal
+        value: High
+      - key: midpoint
+        value: Middle
+      - key: midvertical
+        value: Low
+      - key: vertical
+        value: Floor
+    state:
+      value: ventDirection.value
+      alternatives:
+      - key: auto
+        value: Auto
+      - key: swing
+        value: Swing
+      - key: horizontal
+        value: Ceiling
+      - key: midhorizontal
+        value: High
+      - key: midpoint
+        value: Middle
+      - key: midvertical
+        value: Low
+      - key: vertical
+        value: Floor
+    value: ventDirection.value
+automation:
+  conditions: []
+  actions: []

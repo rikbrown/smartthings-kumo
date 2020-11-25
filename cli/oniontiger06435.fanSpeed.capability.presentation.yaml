@@ -1,0 +1,41 @@
+id: oniontiger06435.fanSpeed
+version: 1
+dashboard:
+  states:
+  - label: "{{fanSpeed.value}}"
+  actions: []
+  basicPlus: []
+detailView:
+- label: Fan Speed
+  displayType: list
+  list:
+    command: 
+      name: setFanSpeed
+      alternatives:
+      - key: auto
+        value: Auto
+      - key: quiet
+        value: Quiet
+      - key: low
+        value: Low
+      - key: powerful
+        value: Medium
+      - key: superPowerful
+        value: High
+    state:
+      value: fanSpeed.value
+      alternatives:
+      - key: auto
+        value: Auto
+      - key: quiet
+        value: Quiet
+      - key: low
+        value: Low
+      - key: powerful
+        value: Medium
+      - key: superPowerful
+        value: High
+    value: fanSpeed.value
+automation:
+  conditions: []
+  actions: []

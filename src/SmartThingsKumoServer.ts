@@ -1,12 +1,10 @@
 import * as bodyParser from 'body-parser';
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
-import { AuthController } from './AuthController';
-import { WebHookController } from './WebHookController';
+import { AuthController } from './controller/AuthController';
+import { WebHookController } from './controller/WebHookController';
 
-class KumoServer extends Server {
-    private readonly SERVER_STARTED = 'Example server started on port: ';
-
+class SmartThingsKumoServer extends Server {
     constructor() {
         super(true);
         this.app.use(bodyParser.json());
@@ -20,9 +18,9 @@ class KumoServer extends Server {
 
     public start(port: number): void {
         this.app.listen(port, () => {
-            Logger.Imp(this.SERVER_STARTED + port);
+            Logger.Imp(`Server started on ${port}`);
         });
     }
 }
 
-export default KumoServer
+export default SmartThingsKumoServer
