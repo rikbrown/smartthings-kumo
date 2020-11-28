@@ -1,11 +1,12 @@
 {
   "name": "smartthings-kumo",
   "version": "1.0.0",
-  "description": "",
+  "description": "SmartThings Webhook Connector for Mitsubishi Kumo HVACs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon -r dotenv/config --config \"./nodemon.json\"/"
+    "start-dev": "nodemon -r dotenv/config --config \"./nodemon.json\"/",
+    "start": "NODE_ENV=development node -r ts-node/register src/start.ts"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "kumojs": "file:../kumojs",
+    "kumojs": "file:./kumojs",
     "st-schema": "^1.4.0"
   },
   "devDependencies": {

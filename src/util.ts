@@ -1,5 +1,5 @@
 export default class Utils {
-    static throwMissing(message: string) {
+    static throwMissing<T>(message: string): T {
         throw message
     }
 }

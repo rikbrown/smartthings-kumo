@@ -1,0 +1,3 @@
+[submodule "kumojs"]
+	path = kumojs
+	url = git@github.com:sushilks/kumojs.git

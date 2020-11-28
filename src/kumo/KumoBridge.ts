@@ -1,11 +1,13 @@
-const KumoJs = require('../../../kumojs/build/kumojs').Kumo
+import Utils from "../util";
+
+const KumoJs = require('../3p/kumojs/kumojs').Kumo
 import { Logger } from '@overnightjs/logger';
 
 /**
  * Typed bridge into kumojs
  */
 export class KumoBridge {
-    private readonly kumo = new KumoJs(require('../../../kumojs/kumo.cfg'))
+    private readonly kumo = new KumoJs(require(process.env.KUMO_CFG_FILE || Utils.throwMissing("KUMO_CFG_FILE not configured")))
 
     public getDevices(): Array<Device> {
         const rooms: Array<string> = this.kumo.getRoomList()
@@ -14,7 +16,7 @@ export class KumoBridge {
 
             return new Device(
                 roomName.replace(/\W/, '_'),
-                roomName + ' HVAC',
+                roomName + ' AC',
                 roomName
             )
         })

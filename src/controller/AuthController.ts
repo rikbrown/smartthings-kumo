@@ -4,7 +4,6 @@ import {Logger} from "@overnightjs/logger";
 
 @Controller('auth')
 export class AuthController {
-
     @Get("challenge")
     private getCode(req: Request, res: Response) {
         Logger.Imp('/auth/challenge');
