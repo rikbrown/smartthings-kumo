@@ -41,3 +41,4 @@ Note: there is no security on the endpoints currently. Need to fix this as part 
 
 1. Graceful error handling/retry
 1. Non-hardcoded configuration (i.e. actual login process).
+1. Figure out why `kumojs` doesn't work as a module (it's currently bundled directly to workaround a 'no module found' error).
